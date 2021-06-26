@@ -1,7 +1,21 @@
-    <a href="{% url 'all-tasks' %}">Go Back</a>
-    <form method="post">
-        {% csrf_token%}
-        {{form.as_p}}
-        <input type="submit" value="Submit new task">
-    </form>
+{% extends 'base.html' %}
 
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'all-tasks' %}">Go Back</a>
+                <form method="post">
+                    {% csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" value="Submit task">
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+{% endblock %}
