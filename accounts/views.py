@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 
 
 class RegisterUserView(CreateView):
@@ -34,4 +35,10 @@ class UserLogoutView(LogoutView):
 
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'form.html'
+    success_url = reverse_lazy('all-tasks')
+
+
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'user_confirm_delete.html'
     success_url = reverse_lazy('all-tasks')

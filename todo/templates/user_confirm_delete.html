@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete User{% endblock %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <ul>
+            <li><a class="nav-link" href="{% url 'all-tasks' %}">Go back</a></li>
+        </ul>
+        <ul style="margin: 5% 0">
+            <li>
+                <form method="post">
+                    {% csrf_token%}
+                    <h3>
+                      {% if user.first_name %}{{ user.first_name }},
+                      {% else %}{{ user.username }},{% endif %}
+                    </h3>
+                    <h3 style="color: red; margin-bottom: 5%;">Are you sure that you want to delete your profile with all tasks?</h3>
+                    <input class="nav-link" type="submit" value="Delete my profile">
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+{% endblock %}

@@ -21,8 +21,9 @@
                             {% if user.first_name %}Welcome, {{ user.first_name }}!
                             {% else %}Welcome, {{ user.username }}!{% endif %}
                         </li>
-                        <li><a class="nav-link" href="{% url 'password-change' %}">Change password</a></li>
                         <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        <li><a class="nav-link" href="{% url 'password-change' %}">Change password</a></li>
+                        <li><a class="nav-link" href="{% url 'delete-user' user.id %}">Delete user</a></li>
                     </ul>
                 </div>
                 <br>
@@ -239,6 +240,9 @@
                 <div class="time">
                     <h4>June 2021</h4>
                 </div>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'all-tasks' %}">Back to top</a>
             </li>
 
             <div style="clear: both;"></div>
