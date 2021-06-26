@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" type="text/css" href='{% static "todo/style.css" %}'>
+{% endblock %}
+
+{% block title %}ToDo - List{% endblock %}
+
+{% block content %}
+
+<!-- Header with navigation button (Login, Register, Create Task) -->
+<header>
+    <nav>
+      <ul>
+        <li><a href="#">Login</a></li>
+        <li class="register"><a href="#">Register</a></li>
+        <li>Uncomplete tasks:<span class="u-tasks"> {{ count_no }} </span></li>
+        <li>Complete tasks:<span class="c-tasks"> {{ count_yes }} </span></li>
+        <li class="all-tasks"> All tasks:<span class="a-tasks"> {{ count_all }} </span></li>
+        <li>
+            <form class="form" method="get">
+                <input type="search" placeholder="Search" aria-label="Search" name="searchbar" value="{{ search }}">
+                <button type="submit">Search</button>
+            </form>
+        </li>
+      </ul>
+    </nav>
+</header>
+
+
+
+<div class="table-container">
+    <a class="table-msg" href="{% url 'create-task' %}">Create Task</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Completed</th>
+          <th>Created</th>
+          <th>Due To</th>
+          <th>Detail</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+        <tbody>
+                {% for task in all_tasks %}
+                    {% if task.completed %}
+                        <tr>
+                          <td class="striker">{{ task.name }}</td>
+                          <td class="striker">{{ task.completed }}</td>
+                          <td class="striker">{{ task.created }}</td>
+                          <td class="striker">{{ task.time_remaining|timeuntil }}</td>
+                          <td><a href="{% url 'detail-task' task.id %}">Detail</a></td>
+                          <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
+                          <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
+                        </tr>
+
+                    {% else %}
+                        <tr>
+                          <td>{{ task.name }}</td>
+                          <td>{{ task.completed }}</td>
+                          <td>{{ task.created }}</td>
+                          <td>{{ task.time_remaining|timeuntil }}</td>
+                          <td><a href="{% url 'detail-task' task.id %}">Detail</a></td>
+                          <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
+                          <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}
+
+{% block section %}
+<section>
+
+    <div class="hero">
+        <h2>Jak to všechno začalo?</h2>
+        <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+            Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+        </h4>
+    </div>
+
+    <div class="timeline">
+        <ul>
+            <li>
+                <div class="content">
+                    <h3>Python - basics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>November 2020</h4>
+                </div>
+            </li>
+
+             <li>
+                <div class="content">
+                    <h3>Software Testing and TDD</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>December 2020</h4>
+                </div>
+            </li>
+
+             <li>
+                <div class="content">
+                    <h3>Python - intermediate</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>January 2021</h4>
+                </div>
+            </li>
+
+             <li>
+                <div class="content">
+                    <h3>Algorithms and data structures</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>February 2021</h4>
+                </div>
+            </li>
+
+             <li>
+                <div class="content">
+                    <h3>Design patterns</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>February 2021</h4>
+                </div>
+            </li>
+
+             <li>
+                <div class="content">
+                    <h3>SQL databases</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>March 2021</h4>
+                </div>
+            </li>
+
+            <li>
+                <div class="content">
+                    <h3>Databases - programming</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>March 2021</h4>
+                </div>
+            </li>
+
+            <li>
+                <div class="content">
+                    <h3>HTML, CSS and JavaScript</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>April 2021</h4>
+                </div>
+            </li>
+
+            <li>
+                <div class="content">
+                    <h3>Backend technologies</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>May 2021</h4>
+                </div>
+            </li>
+
+            <li>
+                <div class="content">
+                    <h3>Final project</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue.
+                        Praesent id justo in neque elementum ultrices. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce nibh. Integer malesuada.
+                    </p>
+                </div>
+                <div class="time">
+                    <h4>June 2021</h4>
+                </div>
+            </li>
+
+            <div style="clear: both;"></div>
+        </ul>
+    </div>
+
+</section>
+{% endblock %}
