@@ -6,12 +6,12 @@
 <header>
     <nav>
         <ul>
+            <li style="margin: 5% auto"><a class="nav-link" href="{% url 'all-tasks' %}">Go back</a></li>
             <li>
-                <a href="{% url 'all-tasks' %}">Go Back</a>
                 <form method="post">
                     {% csrf_token%}
                     {{form.as_p}}
-                    <input type="submit" value="Submit task">
+                    <input class="nav-link" type="submit" value="Submit task">
                 </form>
             </li>
         </ul>

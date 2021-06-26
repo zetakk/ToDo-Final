@@ -6,11 +6,17 @@
 <header>
     <nav>
         <ul>
-            <li>
-                <a class="nav-link" href="{% url 'all-tasks' %}">Go back</a>
-                <h4>Task: {{ task.name }}</h4>
+            <li><a class="nav-link" href="{% url 'all-tasks' %}">Go back</a></li>
+        </ul>
+        <ul style="margin: 5% 0">
+             <li>
+                <h4>{{ task.name }}</h4>
                 <p>{{ task.description }}</p>
             </li>
+        </ul>
+        <ul>
+            <li><a class="nav-link" href="{% url 'edit-task' task.id%}">Edit task</a></li>
+            <li><a class="nav-link" href="{% url 'delete-task' task.id%}">Delete task</a></li>
         </ul>
     </nav>
 </header>

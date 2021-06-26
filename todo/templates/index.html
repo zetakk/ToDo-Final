@@ -17,7 +17,7 @@
             <nav>
                 <div align="right">
                     <ul>
-                        <li style="color: darkblue">
+                        <li style="color: purple">
                             {% if user.first_name %}Welcome, {{ user.first_name }}!
                             {% else %}Welcome, {{ user.username }}!{% endif %}
                         </li>
@@ -90,7 +90,7 @@
                 <ul>
                     <li><a class="nav-link"href="{% url 'login' %}">Login</a></li>
                     <li class="register"><a class="nav-link" href="{% url 'register-user' %}">Register</a></li>
-                    
+
                 </ul>
             </nav>
         </header>
