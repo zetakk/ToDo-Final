@@ -61,7 +61,7 @@
                     {% if task.completed %}
                         <tr>
                             <td class="striker">{{ task.name }}</td>
-                            <td class="striker">{{ task.completed }}</td>
+                            <td><img class="img-icon" src="../static/img/complete-icon.png" alt="Finished"></td>
                             <td class="striker">{{ task.created }}</td>
                             <td class="striker">{{ task.time_remaining|timeuntil }}</td>
                             <td><a href="{% url 'detail-task' task.id %}"><img class="img-icon" src="../static/img/detail-icon.png" alt="Detail"></a></td>
@@ -72,7 +72,7 @@
                     {% else %}
                         <tr>
                             <td>{{ task.name }}</td>
-                            <td>{{ task.completed }}</td>
+                            <td><img class="img-icon" src="../static/img/incomplete-icon.png" alt="Unfinished"></td>
                             <td>{{ task.created }}</td>
                             <td>{{ task.time_remaining|timeuntil }}</td>
                             <td><a href="{% url 'detail-task' task.id %}"><img class="img-icon" src="../static/img/detail-icon.png" alt="Detail"></a></td>
