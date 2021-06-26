@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}ToDo List{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="">{{ form.as_p }}</table>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+{% endblock %}
