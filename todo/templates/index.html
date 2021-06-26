@@ -26,16 +26,17 @@
                     </ul>
                 </div>
                 <br>
-                <ul style="text-align: right">
-                    <li>Incomplete tasks:<span class="u-tasks"> {{ count_no }} </span></li>
-                    <li>Complete tasks:<span class="c-tasks"> {{ count_yes }} </span></li>
-                    <li class="all-tasks"> All tasks:<span class="a-tasks"> {{ count_all }} </span></li>
+                <ul style="text-align: left">
                     <li>
                         <form class="form" method="get">
                             <input type="search" placeholder="Start typing here" aria-label="Search" name="searchbar" value="{{ search }}">
-                            <button type="submit">Search</button>
+                            <input class="nav-link" type="submit" value="Search">
                         </form>
                     </li>
+                    <li>Incomplete tasks:<span class="u-tasks"> {{ count_no }} </span></li>
+                    <li>Complete tasks:<span class="c-tasks"> {{ count_yes }} </span></li>
+                    <li class="all-tasks"> All tasks:<span class="a-tasks"> {{ count_all }} </span></li>
+
                 </ul>
             </nav>
         </header>
