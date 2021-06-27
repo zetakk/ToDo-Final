@@ -43,7 +43,7 @@ class EditTask(UpdateView):
 class DeleteTask(DeleteView):
     model = Task
     success_url = reverse_lazy('all-tasks')
-    template_name = 'delete_task.html'
+    template_name = 'task_confirm_delete.html'
     context_object_name = 'task'
 
 
